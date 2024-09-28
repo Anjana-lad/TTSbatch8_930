@@ -1,0 +1,30 @@
+ Loop has basic parts:
+ 1. Initialization 
+ 2. Condition
+ 3. increment/ decrement
+
+ 3 type sof loop :=
+ 1. for loop 
+ 2. while loop
+ 3. do ..while loop
+
+ syntax for :
+ 1 for loop:
+ for(initialization ;Condition;increment/decrement){
+    // body of loop;
+ }
+
+ 2. while loop
+ initialization;
+ while(Condition){
+    body of loop;
+    increment/decrement;
+ }
+
+ 3. do .. while loop
+ initialization;
+ do{
+    body of loop;
+    increment/decrement
+ }
+while(Condition);
