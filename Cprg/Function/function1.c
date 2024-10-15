@@ -13,7 +13,7 @@ WAP to print a reverse number using function */;
 // sum();
 // }
 
-// int sum(){  // function defination
+// int sum(){  // function definition
 //     int num1,num2,res;
 //     printf("Enter numbers:");
 //     scanf("%d %d",&num1,&num2);
@@ -31,9 +31,9 @@ WAP to print a reverse number using function */;
 
 // no arguments with return
 //  #include<stdio.h>
-//  int multiply(){  // function defination
+//  int multiply(){  // function definition
 //     int num1,num2,res;
-//     printf("Enter num1bers:");
+//     printf("Enter numbers:");
 //     scanf("%d %d",&num1,&num2);
 //     res=num1*num2;
 //    return res;
@@ -59,14 +59,14 @@ WAP to print a reverse number using function */;
 
 // with arguments with return
 #include<stdio.h>
-int sub(int ,int );  // function decalaration
+int sub(int ,int );  // function declaration
 int main(){
     int num1,num2;  // local variables
     printf("Enter numbers:");
     scanf("%d %d",&num1,&num2);
     printf("Subtraction=%d",sub(num1,num2));  // call with actual parameters
 }
-int sub(int a,int b){  // function defination
+int sub(int a,int b){  // function definition
     return a-b;
 }
 
