@@ -8,6 +8,3 @@ int main(){
     fgets(str,20,stdin);
     printf("String=%s",str);
 }
-
-
-
