@@ -1,0 +1,1 @@
+ cout<<"the value of p="<<p<<endl;
