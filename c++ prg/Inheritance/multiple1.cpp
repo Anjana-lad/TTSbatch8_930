@@ -6,9 +6,7 @@ class A{
     int show(){
         cout<<"i am in class A"<<endl;
     }
-    int show(){
-        cout<<"Call me";
-    }
+
 };
 class B{
     public:

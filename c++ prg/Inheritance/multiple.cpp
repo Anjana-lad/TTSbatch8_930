@@ -29,7 +29,7 @@ class child :public Mom,Dad{
     protected:
     int total_m;
     public:
-    child(){
+    child(){   // constructor
     show_m();  // base class method
     show_d();  // base class method
     }

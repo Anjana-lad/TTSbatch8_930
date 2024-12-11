@@ -15,7 +15,7 @@ class Parent1: virtual public Grandparent{
     int p1;
     public:
     void getp1(){
-      //  getgp();
+      // getgp();
         cout<<"Enter getp1:";
         cin>>p1;
     }
