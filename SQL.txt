@@ -1,0 +1,99 @@
+Enter password: ****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 8
+Server version: 8.0.39 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2024, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| 10_12              |
+| batch1_2           |
+| batch4_5           |
+| batch8_10          |
+| da_new             |
+| demo               |
+| information_schema |
+| mysql              |
+| myuser             |
+| new_s              |
+| performance_schema |
+| sys                |
++--------------------+
+12 rows in set (0.02 sec)
+
+mysql> create database batch8_9;
+Query OK, 1 row affected (0.03 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| 10_12              |
+| batch1_2           |
+| batch4_5           |
+| batch8_10          |
+| batch8_9           |
+| da_new             |
+| demo               |
+| information_schema |
+| mysql              |
+| myuser             |
+| new_s              |
+| performance_schema |
+| sys                |
++--------------------+
+13 rows in set (0.00 sec)
+
+mysql>
+mysql> use batch8_9;
+Database changed
+mysql> create table student (rollno int primary key,name varchar(30),mobile_no bigint,Dob date);
+Query OK, 0 rows affected (0.11 sec)
+
+mysql> describe student;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| rollno    | int         | NO   | PRI | NULL    |       |
+| name      | varchar(30) | YES  |     | NULL    |       |
+| mobile_no | bigint      | YES  |     | NULL    |       |
+| Dob       | date        | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+mysql> insert into student values(1,"Mayuri",9632147853,"2001-05-24");
+Query OK, 1 row affected (0.03 sec)
+
+mysql> select * from student;
++--------+--------+------------+------------+
+| rollno | name   | mobile_no  | Dob        |
++--------+--------+------------+------------+
+|      1 | Mayuri | 9632147853 | 2001-05-24 |
++--------+--------+------------+------------+
+1 row in set (0.00 sec)
+
+mysql> insert into student (rollno,name,mobile_no,Dob) values(2,"Darshti",7412589632,"2000-01-03"),(3,"Rudra",951247863,"2003-08-14"),(4,"Kanha",8521479632,"2004-12-25");
+Query OK, 3 rows affected (0.02 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> select * from student;
++--------+---------+------------+------------+
+| rollno | name    | mobile_no  | Dob        |
++--------+---------+------------+------------+
+|      1 | Mayuri  | 9632147853 | 2001-05-24 |
+|      2 | Darshti | 7412589632 | 2000-01-03 |
+|      3 | Rudra   |  951247863 | 2003-08-14 |
+|      4 | Kanha   | 8521479632 | 2004-12-25 |
++--------+---------+------------+------------+
+4 rows in set (0.00 sec)
+
+mysql>
