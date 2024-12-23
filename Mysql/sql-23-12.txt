@@ -1,0 +1,186 @@
+mysql> use batch8_9;
+Database changed
+mysql> show tables;
++--------------------+
+| Tables_in_batch8_9 |
++--------------------+
+| customer           |
+| payment            |
+| student            |
++--------------------+
+3 rows in set (0.02 sec)
+
+mysql> insert into customer values(1,"Riya",7412589632,"Vapi",25),(2,"Priya",8521479635,"Kim",36),(3,"Tina",7521488963,"Surat",27),(4,"Jay",74488577213,"Surat",34),(5,"Parth",9632587412,"Vapi",20);
+Query OK, 5 rows affected (0.04 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> select * from customer;
++------+-------+-------------+-------+------+
+| c_id | name  | mobile_no   | city  | age  |
++------+-------+-------------+-------+------+
+|    1 | Riya  |  7412589632 | Vapi  |   25 |
+|    2 | Priya |  8521479635 | Kim   |   36 |
+|    3 | Tina  |  7521488963 | Surat |   27 |
+|    4 | Jay   | 74488577213 | Surat |   34 |
+|    5 | Parth |  9632587412 | Vapi  |   20 |
++------+-------+-------------+-------+------+
+5 rows in set (0.00 sec)
+
+mysql> describe payment;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| pay_id     | int         | NO   | PRI | NULL    |       |
+| cid        | int         | YES  | MUL | NULL    |       |
+| pay_amount | int         | YES  |     | NULL    |       |
+| pay_mode   | varchar(20) | YES  |     | NULL    |       |
+| pay_date   | date        | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> insert into payment values(101,1,2500,"Cash","2020-12-24"),(102,2,5200,"debit card","2021-07-12"),(103,1,6300,"cash","2022-01-15");
+Query OK, 3 rows affected (0.03 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> select * from payment;
++--------+------+------------+------------+------------+
+| pay_id | cid  | pay_amount | pay_mode   | pay_date   |
++--------+------+------------+------------+------------+
+|    101 |    1 |       2500 | Cash       | 2020-12-24 |
+|    102 |    2 |       5200 | debit card | 2021-07-12 |
+|    103 |    1 |       6300 | cash       | 2022-01-15 |
++--------+------+------------+------------+------------+
+3 rows in set (0.00 sec)
+
+mysql> select * from customer;
++------+-------+-------------+-------+------+
+| c_id | name  | mobile_no   | city  | age  |
++------+-------+-------------+-------+------+
+|    1 | Riya  |  7412589632 | Vapi  |   25 |
+|    2 | Priya |  8521479635 | Kim   |   36 |
+|    3 | Tina  |  7521488963 | Surat |   27 |
+|    4 | Jay   | 74488577213 | Surat |   34 |
+|    5 | Parth |  9632587412 | Vapi  |   20 |
++------+-------+-------------+-------+------+
+5 rows in set (0.00 sec)
+
+mysql> select * from customer where city="Surat";
++------+------+-------------+-------+------+
+| c_id | name | mobile_no   | city  | age  |
++------+------+-------------+-------+------+
+|    3 | Tina |  7521488963 | Surat |   27 |
+|    4 | Jay  | 74488577213 | Surat |   34 |
++------+------+-------------+-------+------+
+2 rows in set (0.00 sec)
+
+mysql> select name,city,mobile_no from customer where city="surat" and age>=20;
++------+-------+-------------+
+| name | city  | mobile_no   |
++------+-------+-------------+
+| Tina | Surat |  7521488963 |
+| Jay  | Surat | 74488577213 |
++------+-------+-------------+
+2 rows in set (0.00 sec)
+
+mysql> select name,city,mobile_no from customer where city="surat" and age<=20;
+Empty set (0.00 sec)
+
+mysql> select name,city,mobile_no from customer where city="surat"  or age<=20;
++-------+-------+-------------+
+| name  | city  | mobile_no   |
++-------+-------+-------------+
+| Tina  | Surat |  7521488963 |
+| Jay   | Surat | 74488577213 |
+| Parth | Vapi  |  9632587412 |
++-------+-------+-------------+
+3 rows in set (0.00 sec)
+
+mysql> select name,city,mobile_no,c_id from customer where city="surat" or age<=20 or city="kim";
++-------+-------+-------------+------+
+| name  | city  | mobile_no   | c_id |
++-------+-------+-------------+------+
+| Priya | Kim   |  8521479635 |    2 |
+| Tina  | Surat |  7521488963 |    3 |
+| Jay   | Surat | 74488577213 |    4 |
+| Parth | Vapi  |  9632587412 |    5 |
++-------+-------+-------------+------+
+4 rows in set (0.00 sec)
+
+mysql> select * from customer where city != "Surat";
++------+-------+------------+------+------+
+| c_id | name  | mobile_no  | city | age  |
++------+-------+------------+------+------+
+|    1 | Riya  | 7412589632 | Vapi |   25 |
+|    2 | Priya | 8521479635 | Kim  |   36 |
+|    5 | Parth | 9632587412 | Vapi |   20 |
++------+-------+------------+------+------+
+3 rows in set (0.00 sec)
+
+mysql> select distinct city from customer;
++-------+
+| city  |
++-------+
+| Vapi  |
+| Kim   |
+| Surat |
++-------+
+3 rows in set (0.00 sec)
+
+mysql> select * from customer limit 3;
++------+-------+------------+-------+------+
+| c_id | name  | mobile_no  | city  | age  |
++------+-------+------------+-------+------+
+|    1 | Riya  | 7412589632 | Vapi  |   25 |
+|    2 | Priya | 8521479635 | Kim   |   36 |
+|    3 | Tina  | 7521488963 | Surat |   27 |
++------+-------+------------+-------+------+
+3 rows in set (0.00 sec)
+
+mysql> select * from customer limit 3 offset 3;
++------+-------+-------------+-------+------+
+| c_id | name  | mobile_no   | city  | age  |
++------+-------+-------------+-------+------+
+|    4 | Jay   | 74488577213 | Surat |   34 |
+|    5 | Parth |  9632587412 | Vapi  |   20 |
++------+-------+-------------+-------+------+
+2 rows in set (0.00 sec)
+
+mysql> select name,city,age from customer where age between 20 and 30;
++-------+-------+------+
+| name  | city  | age  |
++-------+-------+------+
+| Riya  | Vapi  |   25 |
+| Tina  | Surat |   27 |
+| Parth | Vapi  |   20 |
++-------+-------+------+
+3 rows in set (0.00 sec)
+
+mysql> select name,city,age from customer where age not between 20 and 30;
++-------+-------+------+
+| name  | city  | age  |
++-------+-------+------+
+| Priya | Kim   |   36 |
+| Jay   | Surat |   34 |
++-------+-------+------+
+2 rows in set (0.00 sec)
+
+mysql> select * from customer where city in ("Surat","Vapi");
++------+-------+-------------+-------+------+
+| c_id | name  | mobile_no   | city  | age  |
++------+-------+-------------+-------+------+
+|    1 | Riya  |  7412589632 | Vapi  |   25 |
+|    3 | Tina  |  7521488963 | Surat |   27 |
+|    4 | Jay   | 74488577213 | Surat |   34 |
+|    5 | Parth |  9632587412 | Vapi  |   20 |
++------+-------+-------------+-------+------+
+4 rows in set (0.00 sec)
+
+mysql> select * from customer where city not in ("Surat","Vapi");
++------+-------+------------+------+------+
+| c_id | name  | mobile_no  | city | age  |
++------+-------+------------+------+------+
+|    2 | Priya | 8521479635 | Kim  |   36 |
++------+-------+------------+------+------+
+1 row in set (0.00 sec)
+
+mysql>
