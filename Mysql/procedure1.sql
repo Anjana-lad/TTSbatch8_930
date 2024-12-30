@@ -1,4 +1,14 @@
 SELECT * FROM batch8_9.customer;
+
+CREATE USER 'user3'@'localhost' IDENTIFIED BY 'pwd1';
+CREATE USER 'user4'@'localhost' IDENTIFIED BY 'pwd2';
+
+GRANT SELECT,insert ON demo.demo1 TO 'user3'@'localhost';
+grant select on demo.demo1 to 'user2'@'localhost';
+revoke SELECT ON demo.demo1 FROM 'user3'@'localhost';
+
+show grants for 'user3'@'localhost';
+
 -- function
 delimiter //
 CREATE FUNCTION birth_year(age int) RETURNS int
@@ -48,3 +58,7 @@ delimiter ;
 set @var='101';
 call p5(@var);
 select @var; 
+
+
+
+
